@@ -9,8 +9,8 @@ import (
 var camera = ray.Camera{
 	Position:     ray.Quat{W: 0, X: 0, Y: 0, Z: 0.3},
 	Direction:    ray.Euler(0, 0, 0),
-	CanvasWidth:  2000,
-	CanvasHeight: 2000,
+	CanvasWidth:  5760,
+	CanvasHeight: 5760,
 	TMin:         0.1,
 	TMax:         100000,
 	Distance:     1,
@@ -77,5 +77,5 @@ var scene = ray.Scene{
 }
 
 func main() {
-	scene.Render("balls/balls", 1, 100)
+	scene.Render("balls/balls", 1, 1024)
 }

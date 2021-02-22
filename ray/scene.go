@@ -7,7 +7,6 @@ import (
 	"log"
 	"math"
 	"os"
-	"runtime"
 	"strconv"
 	"sync"
 	"time"
@@ -134,7 +133,7 @@ func Reflect(direction Quat, normal Quat) Quat {
 func (s Scene) Render(file_name string, n_frames int, depth int) {
 	total := time.Now()
 	count := 0
-	n := runtime.NumCPU()
+	n := 1024 // runtime.NumCPU()
 	log.Printf("running with %d cores", n)
 	for count < n_frames {
 		t := time.Now()
