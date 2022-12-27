@@ -2,7 +2,7 @@
 ![](diagram.jpeg)
 
 ## Description
-This is a raytracer written in Golang using [this book](https://gabrielgambetta.com/computer-graphics-from-scratch/) as a guide. This program uses a parallel algorithm that utilizes Go's concurrency model. The user describes the scene in `main.go`, which is then rendered. In its current state, the program will make the camera move backward a small amount each frame.
+This is a raytracer written in Golang using [this book](https://gabrielgambetta.com/computer-graphics-from-scratch/) as a guide. This program uses a parallel algorithm that utilizes Go's concurrency model. The user describes the scene in `main.go`, which is then rendered. In its current state, the program will make the camera move backward a small amount each frame. This program is a faster port of [raytracer-python](https://github.com/Broyojo/raytracer-python).
 
 ## Future Plans
 I plan to improve this project in the future by implementing pathtracing, other materials and geometry, textures, and GPU rendering. 
