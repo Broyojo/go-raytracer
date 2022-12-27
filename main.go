@@ -7,10 +7,10 @@ import (
 )
 
 var camera = ray.Camera{
-	Position:     ray.Quat{W: 0, X: 0, Y: 0, Z: 0.3},
+	Position:     ray.Quat{W: 0, X: 0, Y: 0, Z: 0},
 	Direction:    ray.Euler(0, 0, 0),
-	CanvasWidth:  5760,
-	CanvasHeight: 5760,
+	CanvasWidth:  1024,
+	CanvasHeight: 1024,
 	TMin:         0.1,
 	TMax:         100000,
 	Distance:     1,
@@ -20,7 +20,7 @@ var camera = ray.Camera{
 var scene = ray.Scene{
 	Camera: camera,
 	Objects: []ray.Sphere{
-		ray.Sphere{
+		{
 			Center: ray.Quat{W: 0, X: 0, Y: -1, Z: 3},
 			Radius: 1,
 			Material: ray.Mat{
@@ -29,7 +29,7 @@ var scene = ray.Scene{
 				Specular:     625,
 			},
 		},
-		ray.Sphere{
+		{
 			Center: ray.Quat{W: 0, X: -2, Y: 1, Z: 3},
 			Radius: 1,
 			Material: ray.Mat{
@@ -38,7 +38,7 @@ var scene = ray.Scene{
 				Specular:     200,
 			},
 		},
-		ray.Sphere{
+		{
 			Center: ray.Quat{W: 0, X: 2, Y: 1, Z: 3},
 			Radius: 1,
 			Material: ray.Mat{
@@ -47,7 +47,7 @@ var scene = ray.Scene{
 				Specular:     845,
 			},
 		},
-		ray.Sphere{
+		{
 			Center: ray.Quat{W: 0, X: 0, Y: -5001, Z: 0},
 			Radius: 5000,
 			Material: ray.Mat{
@@ -58,16 +58,16 @@ var scene = ray.Scene{
 		},
 	},
 	Lights: []ray.Light{
-		ray.Light{
+		{
 			LightType: 0,
 			Intensity: 0.3,
 		},
-		ray.Light{
+		{
 			LightType: 1,
 			Intensity: 0.2,
 			Position:  ray.Quat{W: 0, X: 2, Y: 1, Z: 0},
 		},
-		ray.Light{
+		{
 			LightType: 2,
 			Intensity: 0.5,
 			Direction: ray.Quat{W: 0, X: 1, Y: 4, Z: 4},
@@ -77,5 +77,5 @@ var scene = ray.Scene{
 }
 
 func main() {
-	scene.Render("balls/balls", 1, 1024)
+	scene.Render("balls/balls", 100, 10)
 }

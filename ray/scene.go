@@ -7,6 +7,7 @@ import (
 	"log"
 	"math"
 	"os"
+	"runtime"
 	"strconv"
 	"sync"
 	"time"
@@ -133,7 +134,7 @@ func Reflect(direction Quat, normal Quat) Quat {
 func (s Scene) Render(file_name string, n_frames int, depth int) {
 	total := time.Now()
 	count := 0
-	n := 1024 // runtime.NumCPU()
+	n := runtime.NumCPU()
 	log.Printf("running with %d cores", n)
 	for count < n_frames {
 		t := time.Now()
@@ -157,9 +158,9 @@ func (s Scene) Render(file_name string, n_frames int, depth int) {
 		close(ch)
 		wg.Wait()
 		log.Printf("done rendering frame %v in %v", count, time.Since(t))
-		s.Camera.Position.Z = calculatePath(s.Camera.Position.X)
-		s.Camera.Position.X += 0.1
-		s.Camera.Rotate(Euler(0.00001, 0, 0))
+		//s.Camera.Position.Z = calculatePath(s.Camera.Position.X)
+		s.Camera.Position.Z += 0.01
+		//s.Camera.Rotate(Euler(0.00001, 0, 0))
 		f, _ := os.Create(file_name + "-" + strconv.Itoa(count) + ".png")
 		png.Encode(f, img)
 		count++
@@ -193,7 +194,7 @@ func (s Scene) work(x float64, y float64, img *image.RGBA, depth int) func() {
 	return func() {
 		origin := Mul(s.Camera.Direction, s.Camera.TranslateCoords(x, y))
 		color := s.RayTrace(Ray{origin, Sub(origin, s.Camera.Position).Norm()}, depth)
-		img.Set(int(x), int(y), color)
+		img.Set(int(x), int(s.Camera.CanvasHeight-y), color) // image should be flipped horizontally
 	}
 }
 

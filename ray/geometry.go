@@ -27,7 +27,7 @@ type Light struct {
 	Direction Quat
 }
 
-//Sphere
+// Sphere
 type Sphere struct {
 	Center   Quat
 	Radius   float64
