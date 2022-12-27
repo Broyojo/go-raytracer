@@ -17,4 +17,4 @@ $ go run main.go
 ```
 $ go run main.go
 ```
-![](showcase.gif) (gif created using ImageMagick: `convert *.png(n) showcase.gif`)
+![](showcase.gif)<br/>(gif created using ImageMagick: `convert *.png(n) showcase.gif`)
